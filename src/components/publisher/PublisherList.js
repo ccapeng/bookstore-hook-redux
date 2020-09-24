@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import PublisherService from '../../services/publisher';
-import { setPublishers, setPublisherDeleted } from '../../actions/publisher';
+import { setPublisherList, setPublisherDeleted } from '../../actions/publisher';
 import { setTab } from '../../actions/tab';
 
 const PublisherList = () => {
 
-  const publishers = useSelector(state => {
-    return state.publishers.publishers
+  const publisherList = useSelector(state => {
+    return state.publisherList.publisherList
   });
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ const PublisherList = () => {
   useEffect(() => {
     const _fetch = async () => {
       let data = await PublisherService.list();
-      dispatch(setPublishers(data));
+      dispatch(setPublisherList(data));
     }
     dispatch(setTab("publisher"));
     _fetch();
@@ -42,7 +42,7 @@ const PublisherList = () => {
         <Link to="/publisher/add/" className="ml-auto">Add Publisher</Link>
       </section>
       <ul className="list-group mt-5">
-        {publishers.map(publisher =>
+        {publisherList.map(publisher =>
           <li key={publisher.id} className="list-group-item d-flex">
             <Link to={`/publisher/${publisher.id}/`}>
               {publisher.name}

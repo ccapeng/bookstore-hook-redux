@@ -50,14 +50,14 @@ const Author = props => {
   }
 
   if (status === "saved") {
-    return (<Redirect to="/authors" />);
+    return (<Redirect to="/authorList" />);
   }
 
   return (
     <>
       <section className="d-flex align-items-center">
         <h1>Author Editor</h1>
-        <Link to="/authors" className="ml-auto">Authors</Link>
+        <Link to="/authorList" className="ml-auto">Author List</Link>
       </section>
       <section className="mt-3">
         <form onSubmit={(event) => { event.preventDefault(); save() }}>

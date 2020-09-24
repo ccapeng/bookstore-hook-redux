@@ -51,14 +51,14 @@ const Category = props => {
   }
 
   if (status === "saved") {
-    return (<Redirect to="/categories" />);
+    return (<Redirect to="/categoryList" />);
   }
 
   return (
     <>
       <section className="d-flex align-items-center">
         <h1>Category Editor</h1>
-        <Link to="/categories" className="ml-auto">Categories</Link>
+        <Link to="/categoryList" className="ml-auto">Categories</Link>
       </section>
       <section className="mt-3">
         <form onSubmit={(event) => { event.preventDefault(); save() }}>

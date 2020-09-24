@@ -45,14 +45,14 @@ const Publisher = props => {
   }
 
   if (status === "saved") {
-    return (<Redirect to="/publishers"></Redirect>);
+    return (<Redirect to="/publisherList"></Redirect>);
   }
 
   return (
     <>
       <section className="d-flex adjust-items-center">
         <h1>Publisher Editor</h1>
-        <Link to="/publishers" className="ml-auto">Publishers</Link>
+        <Link to="/publisherList" className="ml-auto">Publishers</Link>
       </section>
       <section className="mt-3">
         <form onSubmit={(event) => { event.preventDefault(); save() }}>

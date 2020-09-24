@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import AuthorService from '../../services/author';
-import { setAuthors, setAuthorDeleted } from '../../actions/author';
+import { setAuthorList, setAuthorDeleted } from '../../actions/author';
 import { setTab } from '../../actions/tab';
 
 const Author = () => {
 
-  const authors = useSelector(state => {
-    return state.authors.authors
+  const authorList = useSelector(state => {
+    return state.authorList.authorList
   });
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const Author = () => {
   useEffect(() => {
     const _fetch = async () => {
       let data = await AuthorService.list();
-      dispatch(setAuthors(data));
+      dispatch(setAuthorList(data));
     }
 
     dispatch(setTab("author"));
@@ -37,13 +37,12 @@ const Author = () => {
 
   return (
     <>
-
       <section className="d-flex align-items-center">
-        <h1>Authors</h1>
+        <h1>Author List</h1>
         <Link to="/author/add/" className="ml-auto">Add Author</Link>
       </section>
       <ul className="list-group mt-5">
-        {authors.map(author =>
+        {authorList.map(author =>
           <li key={author.id} className="list-group-item d-flex">
             <div>
               <Link to={`/author/${author.id}/`}>{author.lastName}, {author.firstName}</Link>

@@ -3,21 +3,20 @@ import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import BookService from '../../services/book';
-import { setBooks, setBookDeleted } from '../../actions/book';
+import { setBookList, setBookDeleted } from '../../actions/book';
 import { setTab } from '../../actions/tab';
 
 const BookList = () => {
 
-  const books = useSelector(state => {
-    return state.books.books
+  const bookList = useSelector(state => {
+    return state.bookList.bookList
   });
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     const _fetch = async () => {
       let data = await BookService.list();
-      dispatch(setBooks(data));
+      dispatch(setBookList(data));
     }
     dispatch(setTab("book"));
     _fetch();
@@ -51,7 +50,7 @@ const BookList = () => {
           </tr>
         </thead>
         <tbody>
-          {books.map(book =>
+          {bookList.map(book =>
             <tr key={book.id}>
               <td>
                 <Link to={`/book/${book.id}/`}>{book.title}</Link>

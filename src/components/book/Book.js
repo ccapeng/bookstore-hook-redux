@@ -6,9 +6,9 @@ import { setBook, initBook, setBookValue, setBookStatus } from '../../actions/bo
 import CategoryService from '../../services/category';
 import PublisherService from '../../services/publisher';
 import AuthorService from '../../services/author';
-import { setCategories } from '../../actions/category';
-import { setPublishers } from '../../actions/publisher';
-import { setAuthors } from '../../actions/author';
+import { setCategoryList } from '../../actions/category';
+import { setPublisherList } from '../../actions/publisher';
+import { setAuthorList } from '../../actions/author';
 import { setTab } from '../../actions/tab';
 
 const Book = props => {
@@ -17,14 +17,14 @@ const Book = props => {
     return state.book
   });
 
-  const categories = useSelector(state => {
-    return state.categories.categories
+  const categoryList = useSelector(state => {
+    return state.categoryList.categoryList
   });
-  const publishers = useSelector(state => {
-    return state.publishers.publishers
+  const publisherList = useSelector(state => {
+    return state.publisherList.publisherList
   });
-  const authors = useSelector(state => {
-    return state.authors.authors
+  const authorList = useSelector(state => {
+    return state.authorList.authorList
   });
 
   const dispatch = useDispatch();
@@ -67,8 +67,8 @@ const Book = props => {
 
   useEffect(() => {
     const _fetch = async () => {
-      let data = await CategoryService.getAll();
-      dispatch(setCategories(data));
+      let data = await CategoryService.list();
+      dispatch(setCategoryList(data));
     }
     _fetch()
     // eslint-disable-next-line
@@ -76,8 +76,8 @@ const Book = props => {
 
   useEffect(() => {
     const _fetch = async () => {
-      let data = await PublisherService.getAll();
-      dispatch(setPublishers(data));
+      let data = await PublisherService.list();
+      dispatch(setPublisherList(data));
     }
     _fetch();
     // eslint-disable-next-line
@@ -85,8 +85,8 @@ const Book = props => {
 
   useEffect(() => {
     const _fetch = async () => {
-      let data = await AuthorService.getAll();
-      dispatch(setAuthors(data));
+      let data = await AuthorService.list();
+      dispatch(setAuthorList(data));
     }
     _fetch();
     // eslint-disable-next-line
@@ -98,7 +98,7 @@ const Book = props => {
   }, []);
 
   if (status === "saved") {
-    return (<Redirect to="/books" />);
+    return (<Redirect to="/bookList" />);
   }
 
   return (
@@ -106,7 +106,7 @@ const Book = props => {
 
       <section className="d-flex align-items-center">
         <h1>Book Editor</h1>
-        <Link to="/books/" className="ml-auto">Books</Link>
+        <Link to="/bookList/" className="ml-auto">Books</Link>
       </section>
       <section className="mt-3">
         <form onSubmit={(event) => { event.preventDefault(); save() }}>
@@ -131,7 +131,7 @@ const Book = props => {
               value={book.category}
             >
               <option value="0"> --- </option>
-              {categories.map(category =>
+              {categoryList.map(category =>
                 <option value={category.id} key={category.id}>
                   {category.name}
                 </option>
@@ -148,7 +148,7 @@ const Book = props => {
               value={book.publisher}
             >
               <option value="0"> --- </option>
-              {publishers.map(publisher =>
+              {publisherList.map(publisher =>
                 <option value={publisher.id} key={publisher.id}>
                   {publisher.name}
                 </option>
@@ -164,7 +164,7 @@ const Book = props => {
               onChange={event => onChangeBook(event.target.name, event.target.value)}
             >
               <option value="0"> --- </option>
-              {authors.map(author =>
+              {authorList.map(author =>
                 <option value={author.id} key={author.id}>
                   {author.lastName}, {author.firstName}
                 </option>

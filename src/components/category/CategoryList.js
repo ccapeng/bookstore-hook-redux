@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CategoryService from '../../services/category';
-import { setCategories, setCategoryDeleted } from '../../actions/category';
+import { setCategoryList, setCategoryDeleted } from '../../actions/category';
 import { returnErrors } from '../../actions/messages';
 import { setTab } from '../../actions/tab';
 
 const CategoryList = () => {
 
-  const categories = useSelector(state => {
-    return state.categories.categories
+  const categoryList = useSelector(state => {
+    return state.categoryList.categoryList
   });
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const CategoryList = () => {
     const _fetch = async () => {
       try {
         let data = await CategoryService.list();
-        dispatch(setCategories(data));
+        dispatch(setCategoryList(data));
       } catch (error) {
         dispatch(returnErrors(error, "error"));
       }
@@ -45,7 +45,7 @@ const CategoryList = () => {
       </section>
       <section>
         <ul className="list-group mt-3">
-          {categories.map(category =>
+          {categoryList.map(category =>
             <li key={category.id} className="list-group-item d-flex">
               <div>
                 <Link to={`/category/${category.id}/`}>{category.name}</Link>

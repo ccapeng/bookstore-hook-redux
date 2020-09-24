@@ -28,22 +28,22 @@ const Header = () => {
         </div>
         <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
           <li className="nav-item">
-            <Link to="/books" className={"nav-link" + (tab === "book" ? " active" : "")}>
+            <Link to="/bookList" className={"nav-link" + (tab === "book" ? " active" : "")}>
               Books
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/categories" className={"nav-link" + (tab === "category" ? " active" : "")}>
+            <Link to="/categoryList" className={"nav-link" + (tab === "category" ? " active" : "")}>
               Categories
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/publishers" className={"nav-link" + (tab === "publisher" ? " active" : "")}>
+            <Link to="/publisherList" className={"nav-link" + (tab === "publisher" ? " active" : "")}>
               Publishers
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/authors" className={"nav-link" + (tab === "author" ? " active" : "")}>
+            <Link to="/authorList" className={"nav-link" + (tab === "author" ? " active" : "")}>
               Authors
             </Link>
           </li>
