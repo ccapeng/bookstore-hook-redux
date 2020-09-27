@@ -12,4 +12,7 @@
 
 	you can run:
 	`npm start`
-	in the project directory, 
+	in the project directory.
+	
+- For more information, please see in the gitbook
+	[https://ccapeng.gitbook.io/bookstores/](https://ccapeng.gitbook.io/bookstores/)
