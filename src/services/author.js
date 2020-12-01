@@ -1,6 +1,5 @@
 import Request from "./request";
 
-
 const AuthorService = {
   list: () => {
 
