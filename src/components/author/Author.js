@@ -3,7 +3,6 @@ import { Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import AuthorService from '../../services/author';
 import { setAuthor, setAuthorValue, initAuthor, setAuthorStatus } from '../../actions/author';
-import { setTab } from '../../actions/tab';
 
 const Author = props => {
 
@@ -23,7 +22,6 @@ const Author = props => {
         dispatch(initAuthor());
       }
     };
-    dispatch(setTab("author"));
     _fetch();
     // eslint-disable-next-line
   }, []);
@@ -50,14 +48,14 @@ const Author = props => {
   }
 
   if (status === "saved") {
-    return (<Redirect to="/authorList" />);
+    return (<Redirect to="/author" />);
   }
 
   return (
     <>
       <section className="d-flex align-items-center">
         <h1>Author Editor</h1>
-        <Link to="/authorList" className="ml-auto">Author List</Link>
+        <Link to="/author" className="ml-auto">Author List</Link>
       </section>
       <section className="mt-3">
         <form onSubmit={(event) => { event.preventDefault(); save() }}>

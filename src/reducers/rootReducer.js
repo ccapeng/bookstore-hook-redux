@@ -5,7 +5,6 @@ import { authorList, author } from "./author";
 import { bookList, book } from "./book";
 import { errors } from "./errors";
 import { messages } from "./messages";
-import { tab } from "./tab";
 
 export const rootReducer = combineReducers({
   categoryList,
@@ -17,6 +16,5 @@ export const rootReducer = combineReducers({
   bookList,
   book,
   errors,
-  messages,
-  tab
+  messages
 })

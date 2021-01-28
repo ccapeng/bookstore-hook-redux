@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from "react-router-dom";
+
 import App from './components/App';
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -22,12 +24,12 @@ const alertOptions = {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <Provider store={store}>
       <AlertProvider template={AlertTemplate} {...alertOptions}>
         <App />
       </AlertProvider>
     </Provider>
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById('app')
 );

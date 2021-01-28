@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import CategoryService from '../../services/category';
 import { setCategory, initCategory, setCategoryName, setCategoryStatus } from '../../actions/category';
 import { returnErrors } from '../../actions/messages';
-import { setTab } from '../../actions/tab';
 
 const Category = props => {
 
@@ -28,7 +27,6 @@ const Category = props => {
         dispatch(initCategory());
       }
     }
-    dispatch(setTab("category"));
     _fetch();
     // eslint-disable-next-line
   }, []);
@@ -51,14 +49,14 @@ const Category = props => {
   }
 
   if (status === "saved") {
-    return (<Redirect to="/categoryList" />);
+    return (<Redirect to="/category" />);
   }
 
   return (
     <>
       <section className="d-flex align-items-center">
         <h1>Category Editor</h1>
-        <Link to="/categoryList" className="ml-auto">Categories</Link>
+        <Link to="/category" className="ml-auto">Categories</Link>
       </section>
       <section className="mt-3">
         <form onSubmit={(event) => { event.preventDefault(); save() }}>

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import PublisherService from '../../services/publisher';
 import { setPublisherList, setPublisherDeleted } from '../../actions/publisher';
-import { setTab } from '../../actions/tab';
 
 const PublisherList = () => {
 
@@ -13,14 +12,11 @@ const PublisherList = () => {
   });
   const dispatch = useDispatch();
 
-
-
   useEffect(() => {
     const _fetch = async () => {
       let data = await PublisherService.list();
       dispatch(setPublisherList(data));
     }
-    dispatch(setTab("publisher"));
     _fetch();
     // eslint-disable-next-line
   }, []);

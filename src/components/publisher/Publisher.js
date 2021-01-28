@@ -3,7 +3,6 @@ import { Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import PublisherService from '../../services/publisher';
 import { setPublisher, initPublisher, setPublisherName, setPublisherStatus } from '../../actions/publisher';
-import { setTab } from '../../actions/tab';
 
 const Publisher = props => {
 
@@ -17,7 +16,6 @@ const Publisher = props => {
       let data = await PublisherService.get(publisherId);
       dispatch(setPublisher(data));
     }
-    dispatch(setTab("publisher"));
     let publisherId = props.match.params.id;
     if (typeof (publisherId) !== "undefined") {
       _fetch()
@@ -45,14 +43,14 @@ const Publisher = props => {
   }
 
   if (status === "saved") {
-    return (<Redirect to="/publisherList"></Redirect>);
+    return (<Redirect to="/publisher"></Redirect>);
   }
 
   return (
     <>
       <section className="d-flex adjust-items-center">
         <h1>Publisher Editor</h1>
-        <Link to="/publisherList" className="ml-auto">Publishers</Link>
+        <Link to="/publisher" className="ml-auto">Publishers</Link>
       </section>
       <section className="mt-3">
         <form onSubmit={(event) => { event.preventDefault(); save() }}>

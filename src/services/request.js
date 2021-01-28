@@ -10,7 +10,7 @@ const getHeaderConfig = () => {
 
 const getFullURL = (url) => {
   //return `http://127.0.0.1:8103/${url}`;
-  return `http://127.0.0.1:8000/${url}`;
+  return `http://127.0.0.1:8001/${url}`;
 }
 
 

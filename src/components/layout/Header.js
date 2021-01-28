@@ -1,12 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 const Header = () => {
 
-  const tab = useSelector(state => {
-    return state.tab.tab
-  });
   return (
     <nav className="navbar navbar-expand-sm navbar-light bg-light">
       <div className="container">
@@ -28,30 +25,37 @@ const Header = () => {
         </div>
         <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
           <li className="nav-item">
-            <Link to="/bookList" className={"nav-link" + (tab === "book" ? " active" : "")}>
+            <NavLink to="/book"
+              className="nav-link"
+              activeClassName="active">
               Books
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/categoryList" className={"nav-link" + (tab === "category" ? " active" : "")}>
+            <NavLink to="/category"
+              className="nav-link"
+              activeClassName="active">
               Categories
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/publisherList" className={"nav-link" + (tab === "publisher" ? " active" : "")}>
+            <NavLink to="/publisher"
+              className="nav-link"
+              activeClassName="active">
               Publishers
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/authorList" className={"nav-link" + (tab === "author" ? " active" : "")}>
+            <NavLink to="/author"
+              className="nav-link"
+              activeClassName="active">
               Authors
-            </Link>
+            </NavLink>
           </li>
         </ul>
-
       </div>
     </nav>
   );
 }
 
-export default Header;
+export default withRouter(Header);

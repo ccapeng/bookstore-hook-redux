@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import CategoryService from '../../services/category';
 import { setCategoryList, setCategoryDeleted } from '../../actions/category';
 import { returnErrors } from '../../actions/messages';
-import { setTab } from '../../actions/tab';
 
 const CategoryList = () => {
 
@@ -22,7 +21,6 @@ const CategoryList = () => {
         dispatch(returnErrors(error, "error"));
       }
     };
-    dispatch(setTab("category"));
     _fetch();
     // eslint-disable-next-line
   }, []);

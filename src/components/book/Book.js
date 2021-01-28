@@ -9,7 +9,6 @@ import AuthorService from '../../services/author';
 import { setCategoryList } from '../../actions/category';
 import { setPublisherList } from '../../actions/publisher';
 import { setAuthorList } from '../../actions/author';
-import { setTab } from '../../actions/tab';
 
 const Book = props => {
 
@@ -34,7 +33,6 @@ const Book = props => {
       let data = await BookService.get(bookId);
       dispatch(setBook(data));
     }
-    dispatch(setTab("book"));
     let bookId = props.match.params.id;
     if (typeof (bookId) !== "undefined") {
       _fetch();
@@ -98,7 +96,7 @@ const Book = props => {
   }, []);
 
   if (status === "saved") {
-    return (<Redirect to="/bookList" />);
+    return (<Redirect to="/book" />);
   }
 
   return (
@@ -106,7 +104,7 @@ const Book = props => {
 
       <section className="d-flex align-items-center">
         <h1>Book Editor</h1>
-        <Link to="/bookList/" className="ml-auto">Books</Link>
+        <Link to="/book" className="ml-auto">Books</Link>
       </section>
       <section className="mt-3">
         <form onSubmit={(event) => { event.preventDefault(); save() }}>

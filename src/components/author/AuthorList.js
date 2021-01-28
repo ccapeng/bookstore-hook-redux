@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import AuthorService from '../../services/author';
 import { setAuthorList, setAuthorDeleted } from '../../actions/author';
-import { setTab } from '../../actions/tab';
 
 const Author = () => {
 
@@ -20,7 +19,6 @@ const Author = () => {
       dispatch(setAuthorList(data));
     }
 
-    dispatch(setTab("author"));
     _fetch();
     // eslint-disable-next-line
   }, []);

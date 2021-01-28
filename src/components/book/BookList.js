@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import BookService from '../../services/book';
 import { setBookList, setBookDeleted } from '../../actions/book';
-import { setTab } from '../../actions/tab';
 
 const BookList = () => {
 
@@ -18,7 +17,6 @@ const BookList = () => {
       let data = await BookService.list();
       dispatch(setBookList(data));
     }
-    dispatch(setTab("book"));
     _fetch();
     // eslint-disable-next-line
   }, []);
