@@ -15,6 +15,7 @@ const BookList = () => {
   useEffect(() => {
     const _fetch = async () => {
       let data = await BookService.list();
+      console.log(data);
       dispatch(setBookList(data));
     }
     _fetch();
@@ -54,13 +55,13 @@ const BookList = () => {
                 <Link to={`/book/${book.id}/`}>{book.title}</Link>
               </td>
               <td>
-                {book.categoryName}
+                {book.category.name}
               </td>
               <td>
-                {book.publisherName}
+                {book.publisher.name}
               </td>
               <td>
-                {book.authorFirstName} {book.authorLastName}
+                {book.author.firstName} {book.author.lastName}
               </td>
               <td>
                 <button

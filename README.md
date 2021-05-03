@@ -3,8 +3,8 @@
 - This bookstore project is only frontend part. 
 	It's react hook with redux.
 	
-- The backend part is python django.  
-	Please find it in here [https://github.com/ccapeng/bookstore_api](https://github.com/ccapeng/bookstore_api)  
+- The backend part is nodejs.  
+	Please find it in here [https://github.com/ccapeng/typeorm-bookstore](https://github.com/ccapeng/typeorm-bookstore)  
 	
 	You must have backend in order to run the frontend.
 
@@ -12,7 +12,4 @@
 
 	you can run:
 	`npm start`
-	in the project directory.
-	
-- For more information, please see in the gitbook
-	[https://ccapeng.gitbook.io/bookstores/](https://ccapeng.gitbook.io/bookstores/)
+	in the project directory.  

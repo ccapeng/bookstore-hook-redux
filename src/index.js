@@ -9,6 +9,7 @@ import { rootReducer } from "./reducers/rootReducer";
 
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const store = createStore(
   rootReducer,
@@ -27,7 +28,9 @@ ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
       <AlertProvider template={AlertTemplate} {...alertOptions}>
-        <App />
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
       </AlertProvider>
     </Provider>
   </BrowserRouter>,

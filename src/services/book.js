@@ -2,11 +2,11 @@ import Request from "./request";
 
 const BookService = {
   list: () => {
-    let url = "api/book/";
+    let url = "api/books";
     return Request.get(url);
   },
   get: (bookId) => {
-    let url = `api/book/${bookId}/`;
+    let url = `api/books/${bookId}`;
     return Request.get(url);
   },
   save: (book) => {
@@ -22,16 +22,16 @@ const BookService = {
     if (book.id === 0) {
       book.id = "";
       const body = JSON.stringify(book);
-      let url = "api/book/";
+      let url = "api/books";
       return Request.create(url, body);
     } else {
       const body = JSON.stringify(book);
-      let url = `api/book/${book.id}/`;
+      let url = `api/books/${book.id}`;
       return Request.update(url, body);
     }
   },
   delete: (bookId) => {
-    let url = `api/book/${bookId}/`;
+    let url = `api/books/${bookId}`;
     return Request.delete(url);
   }
 }

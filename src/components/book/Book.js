@@ -31,6 +31,7 @@ const Book = props => {
   useEffect(() => {
     const _fetch = async () => {
       let data = await BookService.get(bookId);
+      console.log("book:", data);
       dispatch(setBook(data));
     }
     let bookId = props.match.params.id;
@@ -96,12 +97,11 @@ const Book = props => {
   }, []);
 
   if (status === "saved") {
-    return (<Redirect to="/book" />);
+    return (<Redirect to="/books" />);
   }
 
   return (
     <>
-
       <section className="d-flex align-items-center">
         <h1>Book Editor</h1>
         <Link to="/book" className="ml-auto">Books</Link>
@@ -114,7 +114,9 @@ const Book = props => {
               type="text"
               name="title"
               className="form-control"
-              onChange={event => onChangeBook(event.target.name, event.target.value)}
+              onChange={event => 
+                onChangeBook(event.target.name, event.target.value)
+              }
               value={book.title}
               autoFocus
             />
@@ -123,10 +125,12 @@ const Book = props => {
           <div className="form-group">
             <label>Category</label>
             <select
-              name="category"
+              name="categoryId"
               className="form-control"
-              onChange={event => onChangeBook(event.target.name, event.target.value)}
-              value={book.category}
+              onChange={ event => 
+                onChangeBook(event.target.name, event.target.value)
+              }
+              value={book.categoryId}
             >
               <option value="0"> --- </option>
               {categoryList.map(category =>
@@ -140,10 +144,12 @@ const Book = props => {
           <div className="form-group">
             <label>Publisher</label>
             <select
-              name="publisher"
+              name="publisherId"
               className="form-control"
-              onChange={event => onChangeBook(event.target.name, event.target.value)}
-              value={book.publisher}
+              onChange={event => 
+                onChangeBook(event.target.name, event.target.value)
+              }
+              value={book.publisherId}
             >
               <option value="0"> --- </option>
               {publisherList.map(publisher =>
@@ -156,10 +162,12 @@ const Book = props => {
           <div className="form-group">
             <label>Author</label>
             <select
-              name="author"
+              name="authorId"
               className="form-control"
-              value={book.author}
-              onChange={event => onChangeBook(event.target.name, event.target.value)}
+              value={book.authorId}
+              onChange={event => 
+                onChangeBook(event.target.name, event.target.value)
+              }
             >
               <option value="0"> --- </option>
               {authorList.map(author =>

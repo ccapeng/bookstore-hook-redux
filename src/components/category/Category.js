@@ -38,6 +38,7 @@ const Category = props => {
   const save = () => {
     const _save = async () => {
       let result = await CategoryService.save(category);
+      console.log("result", result);
       dispatch(setCategory(result));
       dispatch(setCategoryStatus("saved"));
       dispatch(setCategoryStatus("")); //reset

@@ -20,7 +20,7 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <a className="navbar-brand" href="/">
-            Bookstore (redux)
+            Bookstore Manager
           </a>
         </div>
         <ul className="navbar-nav ml-auto mt-2 mt-lg-0">

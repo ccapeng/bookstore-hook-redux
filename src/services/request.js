@@ -8,9 +8,13 @@ const getHeaderConfig = () => {
   };
 }
 
-const getFullURL = (url) => {
+export const getFullURL = (url) => {
   //return `http://127.0.0.1:8103/${url}`;
-  return `http://127.0.0.1:8001/${url}`;
+  //let host = process.env.REACT_APP_HOST;
+  let host = 'http://127.0.0.1:8080';
+  //console.log("host:", host);
+  //console.log("getFullURL:", host + "/" + url);
+  return host + "/" + url;
 }
 
 
@@ -41,7 +45,7 @@ const Request = {
         return Promise.reject(result.data);
       }
     } catch (error) {
-      console.log(error);
+      console.log("create error", error);
       return Promise.reject("save error");
     }
 
@@ -50,7 +54,8 @@ const Request = {
   update: async (url, body) => {
 
     try {
-      let result = await axios.patch(getFullURL(url), body, getHeaderConfig());
+      //let result = await axios.patch(getFullURL(url), body, getHeaderConfig());
+      let result = await axios.put(getFullURL(url), body, getHeaderConfig());
       if (result.status === 200) {
         return Promise.resolve(result.data);
       } else {

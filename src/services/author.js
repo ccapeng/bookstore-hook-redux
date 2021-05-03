@@ -3,14 +3,14 @@ import Request from "./request";
 const AuthorService = {
   list: () => {
 
-    let url = "api/author/";
+    let url = "api/authors";
     return Request.get(url);
 
   },
 
   get: (authorId) => {
 
-    let url = `api/author/${authorId}/`;
+    let url = `api/authors/${authorId}`;
     return Request.get(url);
 
   },
@@ -22,13 +22,13 @@ const AuthorService = {
         lastName: author.lastName,
         firstName: author.firstName,
       });
-      let url = "api/author/";
+      let url = "api/authors";
       return Request.create(url, body);
 
     } else {
 
       const body = JSON.stringify(author);
-      let url = `api/author/${author.id}/`;
+      let url = `api/authors/${author.id}`;
       return Request.update(url, body);
 
     }
@@ -37,7 +37,7 @@ const AuthorService = {
 
   delete: (authorId) => {
 
-    let url = `api/author/${authorId}/`;
+    let url = `api/authors/${authorId}`;
     return Request.delete(url);
 
   }

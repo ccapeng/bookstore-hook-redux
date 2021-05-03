@@ -28,9 +28,9 @@ const initialBookState = {
   book: {
     id: 0,
     title: "",
-    category: 0,
-    publisher: 0,
-    author: 0
+    categoryId: 0,
+    publisherId: 0,
+    authorId: 0
   },
   status: ""
 }
@@ -39,14 +39,14 @@ export const book = (state = initialBookState, action) => {
   switch (action.type) {
     case ACTIONS.SET_BOOK:
       let book = action.payload;
-      if (book.category === null) {
-        book.category = 0;
+      if (book.categoryId === null) {
+        book.categoryId = 0;
       }
-      if (book.publisher === null) {
-        book.publisher = 0;
+      if (book.publisherId === null) {
+        book.publisherId = 0;
       }
-      if (book.author === null) {
-        book.author = 0;
+      if (book.authorId === null) {
+        book.authorId = 0;
       }
       return {
         ...state,
@@ -58,13 +58,24 @@ export const book = (state = initialBookState, action) => {
       };
 
     case ACTIONS.SET_BOOK_VALUE:
-      return {
+      // return {
+      //   ...state,
+      //   book: {
+      //     ...state.book,
+      //     ...action.payload
+      //   }
+      // };
+
+      let obj = {
         ...state,
         book: {
           ...state.book,
           ...action.payload
         }
       };
+      console.log("reduce:", obj);
+      return obj;
+
 
     case ACTIONS.SET_BOOK_STATUS:
       if (action.payload === "saved") {

@@ -35,6 +35,7 @@ export const initBook = () => {
 }
 
 export const setBookValue = (key, data) => {
+  console.log("setBookValue", key, data);
   return {
     type: ACTIONS.SET_BOOK_VALUE,
     payload: {
