@@ -9,11 +9,9 @@ const getHeaderConfig = () => {
 }
 
 export const getFullURL = (url) => {
-  //return `http://127.0.0.1:8103/${url}`;
-  //let host = process.env.REACT_APP_HOST;
-  let host = 'http://127.0.0.1:8080';
-  //console.log("host:", host);
-  //console.log("getFullURL:", host + "/" + url);
+  let host = process.env.REACT_APP_HOST || 'http://127.0.0.1:8080';
+  //let host = 'http://127.0.0.1:8080';
+  console.log("host:", host);
   return host + "/" + url;
 }
 

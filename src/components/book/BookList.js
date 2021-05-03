@@ -15,7 +15,6 @@ const BookList = () => {
   useEffect(() => {
     const _fetch = async () => {
       let data = await BookService.list();
-      console.log(data);
       dispatch(setBookList(data));
     }
     _fetch();

@@ -31,7 +31,6 @@ const Book = props => {
   useEffect(() => {
     const _fetch = async () => {
       let data = await BookService.get(bookId);
-      console.log("book:", data);
       dispatch(setBook(data));
     }
     let bookId = props.match.params.id;

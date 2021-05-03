@@ -58,24 +58,13 @@ export const book = (state = initialBookState, action) => {
       };
 
     case ACTIONS.SET_BOOK_VALUE:
-      // return {
-      //   ...state,
-      //   book: {
-      //     ...state.book,
-      //     ...action.payload
-      //   }
-      // };
-
-      let obj = {
+      return {
         ...state,
         book: {
           ...state.book,
           ...action.payload
         }
       };
-      console.log("reduce:", obj);
-      return obj;
-
 
     case ACTIONS.SET_BOOK_STATUS:
       if (action.payload === "saved") {
