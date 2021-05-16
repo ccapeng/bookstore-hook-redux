@@ -3,11 +3,16 @@ FROM python:3
 # Sets an environmental variable that ensures output from python is sent straight to the terminal without buffering it first
 ENV PYTHONUNBUFFERED 1
 
-RUN git clone https://github.com/ccapeng/bookstore_openapi.git
-
+# RUN git clone https://github.com/ccapeng/bookstore_openapi.git
+RUN apt-get update \        
+    apt-get install -y git
+RUN mkdir api \      
+           cd api \        
+           git clone https://github.com/ccapeng/bookstore_openapi.git
+           
 WORKDIR /app
 
-COPY bookstore_openapi/ .
+COPY api/bookstore_openapi/ .
 
 RUN pip install -r requirements.txt
 
