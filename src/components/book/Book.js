@@ -96,7 +96,7 @@ const Book = props => {
   }, []);
 
   if (status === "saved") {
-    return (<Redirect to="/books" />);
+    return (<Redirect to="/book" />);
   }
 
   return (
@@ -133,7 +133,7 @@ const Book = props => {
             >
               <option value="0"> --- </option>
               {categoryList.map(category =>
-                <option value={category.id} key={category.id}>
+                <option value={category.id} key={`${category.id}`}>
                   {category.name}
                 </option>
               )}
@@ -152,7 +152,7 @@ const Book = props => {
             >
               <option value="0"> --- </option>
               {publisherList.map(publisher =>
-                <option value={publisher.id} key={publisher.id}>
+                <option value={publisher.id} key={`pub-${publisher.id}`}>
                   {publisher.name}
                 </option>
               )}
@@ -170,7 +170,7 @@ const Book = props => {
             >
               <option value="0"> --- </option>
               {authorList.map(author =>
-                <option value={author.id} key={author.id}>
+                <option value={author.id} key={`aut${author.id}`}>
                   {author.lastName}, {author.firstName}
                 </option>
               )}

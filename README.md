@@ -13,3 +13,10 @@
 	you can run:
 	`npm start`
 	in the project directory.  
+
+- Dockerify
+
+	- django rest framework as backend server
+		- Run `docker-compose up -f docker-compose-django`
+	- node.js as backend server
+		- Coming...

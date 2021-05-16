@@ -1,20 +1,17 @@
 import axios from "axios";
 
-const getHeaderConfig = () => {
-  return {
-    headers: {
-      "Content-Type": "application/json"
-    }
-  };
-}
+const apiHost = process.env.REACT_APP_API_HOST || 'http://127.0.0.1:8080';
+const origin = process.env.REACT_APP_ORIGIN || 'http://127.0.0.1:3000/';
+const getHeaders = () => ({
+  headers: {
+    "Content-Type": "application/json",
+    "Origin": origin
+  }
+})
 
 export const getFullURL = (url) => {
-  let host = process.env.REACT_APP_HOST || 'http://127.0.0.1:8080';
-  //let host = 'http://127.0.0.1:8080';
-  console.log("host:", host);
-  return host + "/" + url;
+  return apiHost + "/" + url;
 }
-
 
 const Request = {
 
@@ -23,7 +20,7 @@ const Request = {
     try {
       let result = await axios.get(
         getFullURL(url),
-        getHeaderConfig()
+        getHeaders()
       );
       return Promise.resolve(result.data);
     } catch (error) {
@@ -36,7 +33,11 @@ const Request = {
   create: async (url, body) => {
 
     try {
-      let result = await axios.post(getFullURL(url), body, getHeaderConfig());
+      let result = await axios.post(
+        getFullURL(url), 
+        body, 
+        getHeaders()
+      );
       if (result.status === 201) {
         return Promise.resolve(result.data);
       } else {
@@ -52,8 +53,11 @@ const Request = {
   update: async (url, body) => {
 
     try {
-      //let result = await axios.patch(getFullURL(url), body, getHeaderConfig());
-      let result = await axios.put(getFullURL(url), body, getHeaderConfig());
+      let result = await axios.put(
+        getFullURL(url), 
+        body, 
+        getHeaders()
+      );
       if (result.status === 200) {
         return Promise.resolve(result.data);
       } else {
@@ -69,7 +73,9 @@ const Request = {
   delete: async (url) => {
 
     try {
-      let result = await axios.delete(getFullURL(url), getHeaderConfig());
+      let result = await axios.delete(
+        getFullURL(url), getHeaders
+      );
       if (result.status === 204) {
         return Promise.resolve("deleted");
       } else {
