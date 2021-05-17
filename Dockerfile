@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:experimental
 # build env
 # FROM node:alpine as build
 
