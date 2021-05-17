@@ -1,23 +1,9 @@
 version: "3.8"
 services:
 
-  #django:
-  #  image: bookstore_django_openapi
-  #  build:
-  #    context: ./
-  #    dockerfile: Dockerfile.django
-  #  ports:
-  #    - "8001:8001"
-      
-  client:
-    image: bookstore_django_client
-    build:
-      context: ./
-      dockerfile: Dockerfile.react
-    volumes:
-      - /app/node_modules
-      - .:/app
+  django:
+    image: bookstore_django_openapi
+    build: https://github.com/ccapeng/bookstore_openapi.git
     ports:
-      - "3001:3000"
-    stdin_open: true
-    
+      - "8001:8001"
+          
