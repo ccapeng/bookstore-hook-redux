@@ -5,7 +5,7 @@ services:
     image: bookstore_django_client
     build:
       context: ./
-      dockerfile: Dockerfile.react
+      dockerfile: Dockerfile
     volumes:
       - /app/node_modules
       - .:/app
