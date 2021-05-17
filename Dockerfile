@@ -11,10 +11,13 @@
 
 FROM node:alpine as build
 WORKDIR /app
-COPY package*.json ./
-RUN npm install --production
+# COPY package*.json ./
+# RUN npm install --production
+# COPY . .
+# RUN npm run build
 COPY . .
-RUN npm run build
+RUN yarn
+RUN yarn build
 
 # prod env
 FROM nginx

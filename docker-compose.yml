@@ -6,9 +6,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - /app/node_modules
-      - .:/app
     ports:
       - "80:80"
     environment:
