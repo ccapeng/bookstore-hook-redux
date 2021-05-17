@@ -3,7 +3,10 @@ services:
 
   node-typeorm:
     image: bookstore_node_typeorm
+    # build from main branch
     build: https://github.com/ccapeng/typeorm-bookstore.git#main
     ports:
       - "8001:8001"
+    environment:
+      PORT: 8001
           
