@@ -2,13 +2,14 @@ version: "3.8"
 services:
       
   client:
-    image: bookstore_django_client
+    image: bookstore_web_app
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     volumes:
       - /app/node_modules
       - .:/app
     ports:
-      - "3000:3000"
-    stdin_open: true
+      - "80:80"
+    environment:
+      NODE_ENV: production

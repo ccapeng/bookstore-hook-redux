@@ -1,21 +1,18 @@
-FROM node:alpine
+# build env
+FROM node:alpine as build
 
 USER node
 
-# set working directory
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
-#ENV PATH /app/node_modules/.bin:$PATH
-
-# install app dependencies
-COPY package.json ./
-#COPY package-lock.json ./
-RUN npm install --silent
-# RUN npm install react-scripts@3.4.1 -g --silent
-
-# add app
 COPY . ./
+RUN npm install --silent
+RUN npm run build
 
-# start app
-CMD ["npm", "start"]
+# prod env
+FROM nginx
+COPY - from=build /app/build /usr/share/nginx/html
+COPY - from=build /app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
