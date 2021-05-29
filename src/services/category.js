@@ -1,26 +1,27 @@
-import Request, { getFullURL } from "./request";
+//import Request, { getFullURL } from "./request";
+import Request from "./request";
 
 const CategoryService = {
-  listURL:() => {
-    let url = "api/categories";
-    return getFullURL(url);
-  },
-  getURL: (categoryId) => {
-    let url = `api/categories/${categoryId}`;
-    return getFullURL(url);
-  },
-  saveURL: (id) => {
-    let url = "api/categories";
-    if (id !== 0) {
-      url = `api/categories/${id}`;
-    }
-    return getFullURL(url);
-  },
+  // listURL:() => {
+  //   let url = "api/categories";
+  //   return getFullURL(url);
+  // },
+  // getURL: (categoryId) => {
+  //   let url = `api/categories/${categoryId}`;
+  //   return getFullURL(url);
+  // },
+  // saveURL: (id) => {
+  //   let url = "api/categories";
+  //   if (id !== 0) {
+  //     url = `api/categories/${id}`;
+  //   }
+  //   return getFullURL(url);
+  // },
 
-  deleteURL: (id) => {
-    let url = `api/categories/${id}`;
-    return getFullURL(url);
-  },
+  // deleteURL: (id) => {
+  //   let url = `api/categories/${id}`;
+  //   return getFullURL(url);
+  // },
 
   list: () => {
     let url = "api/categories";
@@ -42,7 +43,7 @@ const CategoryService = {
     }
   },
   delete: (categoryId) => {
-    let url = `api/categories/${categoryId}/`;
+    let url = `api/categories/${categoryId}`;
     return Request.delete(url);
   }
 }

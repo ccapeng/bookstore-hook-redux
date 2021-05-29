@@ -20,13 +20,13 @@
 - Dockerify
 	- Include web server and backend.
 	- Deploy react to nginx.
-	- django rest framework as backend server
+	- Django rest framework as backend server
 		- To build, `docker-compose -f docker-compose.yml -f docker-compose-django.yml build`  
 		    or execute `build-django.sh`
 		- Run it, `docker-compose -f docker-compose.yml -f docker-compose-django.yml up`  
 			or execute `run-django.sh`
 		- To chekc it, just go to http://127.0.0.1/
-	- node.js as backend server
+	- Node.js as backend server
 		- To build, `docker-compose -f docker-compose.yml -f docker-compose-typeorm.yml build`  
 	        or execute `build-typeorm.sh`
 		- Run it, `docker-compose -f docker-compose.yml -f docker-compose-typeorm.yml up`  
@@ -34,3 +34,9 @@
 		- To chekc it, just go to http://127.0.0.1/  
 		    Do not run this with above one at the same time, 
 		    since the front end use the same port.
+	- Flask as backend server
+		- To build, `docker-compose -f docker-compose.yml -f docker-compose-flask.yml build`  
+		    or execute `build-flask.sh`
+		- Run it, `docker-compose -f docker-compose.yml -f docker-compose-flask.yml up`  
+			or execute `run-flask.sh`
+		- To chekc it, just go to http://127.0.0.1/
